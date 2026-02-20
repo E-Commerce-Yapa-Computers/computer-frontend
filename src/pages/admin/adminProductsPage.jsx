@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 import axios from "axios";
 import formatPrice from "../../utils/price-format";
 import { CiEdit } from "react-icons/ci";
-import { AiOutlineDelete } from "react-icons/ai";
 import LoadingAnimation from "../../components/loadingAnim";
 import DeleteModel from "../../components/deleteModel";
 
