@@ -1,0 +1,38 @@
+import { useState } from "react";
+import { getCart } from "../utils/cart";
+import { BiMinus, BiPlus } from "react-icons/bi";
+
+export default function Cart() {
+    const [cart, setCart] = useState(getCart());
+    return (
+        <div className="w-full h-[calc(100vh-100px)] overflow-y-scroll">
+
+            <div className="w-full flex flex-col items-center justify-center p-5 gap-4">
+                {
+                    cart.map((cartItem, index) => {
+                        return (
+                            <div key={index} className="w-600px h-[150px] bg-white flex flex-row rounded-lg shadow overflow-hidden">
+                                <img src={cartItem.product.images} alt={cartItem.product.name} className="h-[150px] aspect-square object-cover" />
+                                <div className="w-[300px] h-full p-4 flex flex-col overflow-hidden bg-yellow-200 justify-between">
+                                    <p className="text-xs text-gray-500">{cartItem.product.productId}</p>
+                                    <h1 className="text-xl font-bold">{cartItem.product.name}</h1>
+                                    <div className="w-[210px] h-[50px] border border-accent flex rounded-full overflow-hidden">
+                                        <button className="w-[70px] h-full flex items-center justify-center font-bold text-2xl text-gray-700 hover:bg-accent cursor-pointer">
+                                            <BiMinus/>
+                                        </button>
+                                        <span className="w-[70px] h-full flex items-center justify-center font-bold text-lg text-gray-700">
+                                            {cartItem.qty}
+                                        </span>
+                                        <button className="w-[70px] h-full flex items-center justify-center font-bold text-2xl text-gray-700 hover:bg-accent cursor-pointer">
+                                            <BiPlus/>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        </div>
+    )
+}
